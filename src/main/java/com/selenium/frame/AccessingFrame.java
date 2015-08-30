@@ -36,9 +36,10 @@ public class AccessingFrame {
 		
 		driver.findElement(By.xpath("//*[@id=\"sendSMS\"]/a")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.switchTo().frame("frame");
 		
 		driver.findElement(By.cssSelector("#mobile")).sendKeys("8008387233");
-		driver.findElement(By.name("//*[@id=\"message\"]")).sendKeys("msg sent thru automation");
+		driver.findElement(By.xpath("//*[@id=\"message\"]")).sendKeys("msg sent thru automation");
 		driver.findElement(By.id("Send")).click();
 	}
 
