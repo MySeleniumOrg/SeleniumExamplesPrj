@@ -29,6 +29,7 @@ public class AccessingFrame {
 		driver.findElement(By.name("username")).sendKeys("8008387233");
 		driver.findElement(By.name("password")).sendKeys("omsairam");
 		driver.findElement(By.id("loginBTN")).click();
+		
 		//click on send free sms button
 		driver.findElement(By.xpath("//*[@id=\"ebFrm\"]/div[2]/div[1]/input")).click();
 		
@@ -38,9 +39,16 @@ public class AccessingFrame {
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.switchTo().frame("frame");
 		
+		
 		driver.findElement(By.cssSelector("#mobile")).sendKeys("8008387233");
 		driver.findElement(By.xpath("//*[@id=\"message\"]")).sendKeys("msg sent thru automation");
 		driver.findElement(By.id("Send")).click();
+		
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		
+		String winHandleBefore = driver.getWindowHandle();
+		driver.switchTo().window(winHandleBefore);
+		driver.findElement(By.xpath("//*[@id=\"Language SMS\"]/a")).click();
 	}
 
 }
